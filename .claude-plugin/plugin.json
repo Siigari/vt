@@ -1,7 +1,7 @@
 {
   "name": "vt",
   "description": "VT, the Vibecoder Translator: turns \"yes / no / not yet\" into instructions your agent can actually execute, faithful to what you meant, and checks the unclear ones with you before it acts.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": { "name": "David (Siliroid)" },
   "homepage": "https://github.com/Siigari/vt",
   "repository": "https://github.com/Siigari/vt",

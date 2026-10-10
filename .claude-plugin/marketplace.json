@@ -10,7 +10,7 @@
       "name": "vt",
       "description": "Turns \"yes / no / not yet\" into instructions your agent can actually execute, faithful to what you meant.",
       "source": "./",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "category": "productivity"
     }
   ]

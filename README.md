@@ -1,21 +1,30 @@
 # VT: the Vibecoder Translator
 
-Your agent asks you three careful questions. You type "yes / no / not yet". VT turns that into instructions it can actually execute, faithful to what you meant, and checks the unclear ones with you before it acts.
+## Has this ever happened to *you?*
 
-```
-Agent: 1. Should the new parser become the default, or stay behind --new-parser? I'd keep the flag for now.
-       2. Should the response cache go on the API server only? I'd do API only.
+Your agent asks you five careful questions.
 
-You:   yes / no
+![The agent asks five dense technical questions](assets/questions.png)
 
-VT read your answers as:
-1. Keep the new parser behind --new-parser for now, as recommended.
-2. Your "no" to "API server only" doesn't say what you want instead:
-   ( ) Put the cache on every server
-   ( ) Don't add the cache at all
-```
+And you answer the way people actually answer.
 
-Without VT, that "no" became "so it goes on every server" in our tests: a decision nobody made.
+![Answers like "uh, yeah?" and "i have no idea what you said but sure"](assets/answers.png)
+
+Then the agent picks a meaning for "sure" and builds it. Hours later you find out what you agreed to.
+
+**There's got to be a better way!**
+
+## Introducing VT, the Vibecoder Translator
+
+VT reads your short answers before the agent acts. The clear ones it spells out as instructions. The unclear ones it checks with you, in plain words.
+
+![VT asks which "ticks without lag" meant: exact math or normal math](assets/picker.png)
+
+Then it shows the agent exactly what you meant, and nothing you didn't.
+
+![VT read your answers as: five plain instructions](assets/read-as.png)
+
+Without VT, a bare "no" to "API server only?" became "so it goes on every server" in our tests: a decision nobody made.
 
 ## The rules it follows
 - **Faithful, not creative.** "yes" stays yes, "no" stays no, "not yet" stays not yet, "sort of" stays partial.

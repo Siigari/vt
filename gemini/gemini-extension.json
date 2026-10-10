@@ -1,0 +1,5 @@
+{
+  "name": "vt",
+  "version": "1.0.0",
+  "description": "VT, the Vibecoder Translator. Use when the user answers questions you just asked with short replies (\"yes\", \"no\", \"not yet\", \"yes / no\", \"1 yes 2 later\"), or types /vt. Before acting, it spells each short answer out as a clear instruction, faithful to what they meant, and checks the unclear ones with them."
+}

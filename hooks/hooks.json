@@ -1,0 +1,12 @@
+{
+  "description": "VT auto mode: when Claude just asked you questions and your reply is short, Claude reads it with VT first. Off: VT_AUTO=0.",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          { "type": "command", "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/auto.js\"", "timeout": 5 }
+        ]
+      }
+    ]
+  }
+}

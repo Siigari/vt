@@ -1,0 +1,17 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "vt",
+  "description": "VT, the Vibecoder Translator",
+  "owner": {
+    "name": "David (Siliroid)"
+  },
+  "plugins": [
+    {
+      "name": "vt",
+      "description": "Turns \"yes / no / not yet\" into instructions your agent can actually execute, faithful to what you meant.",
+      "source": "./",
+      "version": "1.0.0",
+      "category": "productivity"
+    }
+  ]
+}

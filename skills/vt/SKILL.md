@@ -1,0 +1,43 @@
+---
+name: vt
+description: VT, the Vibecoder Translator. Use when the user answers questions you just asked with short replies ("yes", "no", "not yet", "yes / no", "1 yes 2 later"), or types /vt. Before acting, it spells each short answer out as a clear instruction, faithful to what they meant, and checks the unclear ones with them.
+argument-hint: "[your short answers, like: yes / no / not yet]"
+---
+
+# VT: the Vibecoder Translator
+
+The user typed short answers to questions you asked. Before you act, turn each one into a clear instruction you can execute, faithful to what they meant. Their answers: $ARGUMENTS
+
+(If that line is empty or shows a placeholder, their answers are their latest message.)
+
+## 1. Find the questions
+Take the questions from your own recent messages, newest first: a numbered list of asks, a "Questions" or "Needs you" section, or sentences ending in "?". Number them the way the user saw them. If you can't find any questions, say so in one line and treat their message as a normal request.
+
+## 2. Match each answer to its question
+- A numbered answer ("2. no") answers that number.
+- Otherwise their lines, or parts split by "/" or ",", answer the questions in order.
+- One answer for several questions ("yes") answers all of them only if it clearly does.
+- A question they didn't answer stays open. Don't guess it; mention it at the end.
+
+## 3. Spell each answer out
+Write each as their instruction to you, one or two sentences, in plain words. The rules:
+- **Be faithful to the answer, in its spirit.** "yes" stays yes, "no" stays no, "not yet" stays not yet, "sort of" stays partial. Never turn it into a different decision.
+- **A "yes" to an either/or, or to a question that ended with your recommendation ("I'd do X"), means your recommendation.** That's what they're agreeing to. Don't offer the other side as an option.
+- **Add nothing.** Use only what they said and what you proposed or asked. No new steps, tests, reviews, conditions or cautions that neither of you mentioned, and don't rule out things neither of you raised.
+- **Keep their changes.** "yes but on both servers" means your plan, changed to both servers.
+
+## 4. Check, then act
+- **Every answer clear?** Show one short block, then do the work:
+  ```
+  VT read your answers as:
+  1. <spelled out>
+  2. <spelled out>
+  ```
+- **Any answer unclear?** That means soft words ("sort of", "maybe", "kinda"); a "no" that doesn't say what to do instead (a "no" to "X only?" could mean "everywhere" or "nowhere": never pick one yourself); an answer that could cover more than you proposed; or parts that may or may not go together. Show how you read the clear ones first (the same block), then ask before acting, only about the unclear ones:
+  - In Claude Code, use its AskUserQuestion tool: one question per unclear answer, at most 4 per call, 2 to 4 options each. Every option must be a faithful version of their answer (a fuller one that spells out your proposal, or a tighter one), never a different decision. Put the one you'd pick first, labeled "(Recommended)". If the options are separate parts of the same answer ("do it", "then re-run"), allow several to be picked. The tool adds "Other" by itself, so don't add one.
+  - Anywhere else (Codex, Gemini, Grok and other agents), don't use an ask tool: list the choices in your reply as 1a, 1b, 2a and so on, end your turn, and wait for their reply. The same if AskUserQuestion fails.
+  - Never settle an unclear answer yourself, not by looking through the project and not by picking the likeliest reading. Only the user can. Act on the clear answers only after they've answered the unclear ones.
+  - If you can't ask in this session (a one-shot or scripted run, or the ask tool fails), your reply is just the block and the listed choices. Don't choose for them, don't act, and don't call it decided. They'll answer in their next message.
+- Then act on the spelled-out answers, exactly as written.
+
+Keep VT itself short: the block, or the check, then the work. Don't explain VT unless they ask.

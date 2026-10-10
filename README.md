@@ -53,5 +53,5 @@ For the agents below, get the files first: `git clone https://github.com/Siigari
 - Claude Code 2.1.280 on Sonnet 5.5, with `--plugin-dir` and the picker: `/vt` and `/vt:vt` both work. Auto mode fires on short answers to questions, and stays quiet after a message with no questions, on long replies and on slash commands.
 - Codex 0.162 on GPT-6.1 Sol: `$vt` works, and unclear answers are checked as 1a/1b.
 - Gemini CLI 0.63 (API key): `/vt` works through `-p` and `--resume`, and unclear answers are checked as 2a/2b.
-- Grok Build 1.0.50: installs as a plugin from the folder (`grok plugin install <path> --trust`). `/vt` and auto mode both work in one-shot mode on its default model: clear answers spelled out, unclear ones listed as 2a/2b, nothing guessed. **Untested on Grok's higher-quality models and in interactive sessions: feedback welcome.** Installing by name from this marketplace file failed in Grok.
-- Not yet tested: installing from a GitHub marketplace.
+- Grok Build 1.0.50: `grok plugin install Siigari/vt --trust` installs it from GitHub. `/vt` and auto mode both work in one-shot mode on its default model: clear answers spelled out, unclear ones listed as 2a/2b, nothing guessed. **Untested on Grok's higher-quality models and in interactive sessions: feedback welcome.** (Grok won't install it by name from this repo's marketplace file, so use the direct command.)
+- Installing from GitHub: tested in Claude Code (`/plugin marketplace add Siigari/vt`, then `/plugin install vt@vt`; auto mode works from the install) and Grok (the direct command above).
